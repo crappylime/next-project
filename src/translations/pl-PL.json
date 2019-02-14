@@ -1,0 +1,16 @@
+{
+  "APP_NAME": "NextProject",
+  "Search": "Szukaj",
+  "Welcome to NextProject !": "Witaj na stronie NextProject !",
+  "Home": "Strona główna",
+  "Logged in as": "Zalogowany jako",
+  "Login": "Zaloguj się",
+  "Logout": "Wyloguj się",
+  "Password": "Hasło",
+  "Password is required": "Hasło jest wymagane",
+  "Username": "Nazwa użytkownika",
+  "Username is required": "Nazwa użytkownika jest wymagana",
+  "Username or password incorrect.": "Nazwa użytkownika lub hasło jest niepoprawne",
+  "Remember me": "Zapamiętaj mnie",
+  "Version": "Wersja"
+}

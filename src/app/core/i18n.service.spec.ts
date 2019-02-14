@@ -110,8 +110,8 @@ describe('I18nService', () => {
       i18nService.language = newLanguage;
 
       // Assert
-      expect(translateService.use).toHaveBeenCalledWith('pl-PL');
-      expect(onLangChangeSpy).toHaveBeenCalledWith('pl-PL');
+      expect(translateService.use).toHaveBeenCalledWith('en-US');
+      expect(onLangChangeSpy).toHaveBeenCalledWith('en-US');
     });
 
     it('should change current language to default if unsupported', () => {

@@ -5,7 +5,7 @@ import { FlexLayoutModule } from '@angular/flex-layout';
 
 import { MaterialModule } from '@app/material.module';
 import { SearchRoutingModule } from './search-routing.module';
-import { SearchContainerComponent } from './search-container.component';
+import { SearchContainerComponent } from './components/search-container/search-container.component';
 
 @NgModule({
   imports: [CommonModule, TranslateModule, FlexLayoutModule, MaterialModule, SearchRoutingModule],

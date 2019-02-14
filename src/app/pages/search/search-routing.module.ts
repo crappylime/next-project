@@ -2,7 +2,7 @@ import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 
 import { extract } from '@app/core';
-import { SearchContainerComponent } from './search-container.component';
+import { SearchContainerComponent } from './components/search-container/search-container.component';
 
 const routes: Routes = [
   // Module is lazy loaded, see app-routing.module.ts

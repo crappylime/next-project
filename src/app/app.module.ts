@@ -8,9 +8,9 @@ import { MaterialModule } from './material.module';
 
 import { CoreModule } from '@app/core';
 import { SharedModule } from '@app/shared';
-import { HomeModule } from './home/home.module';
+import { HomeModule } from './pages/home/home.module';
 import { ShellModule } from './shell/shell.module';
-import { LoginModule } from './login/login.module';
+import { LoginModule } from './pages/login/login.module';
 import { AppComponent } from './app.component';
 import { AppRoutingModule } from './app-routing.module';
 

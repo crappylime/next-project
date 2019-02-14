@@ -3,7 +3,7 @@ import { Routes, RouterModule, PreloadAllModules } from '@angular/router';
 import { Shell } from '@app/shell/shell.service';
 
 const routes: Routes = [
-  Shell.childRoutes([{ path: 'search', loadChildren: 'app/search/search.module#SearchModule' }]),
+  Shell.childRoutes([{ path: 'search', loadChildren: './pages/search/search.module#SearchModule' }]),
   // Fallback when no prior route is matched
   { path: '**', redirectTo: '', pathMatch: 'full' }
 ];

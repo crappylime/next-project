@@ -25,34 +25,67 @@ export class SearchTableComponent {
       { headerName: 'First Name', field: 'firstName', width: 130, filter: 'agTextColumnFilter' },
       { headerName: 'Last Name', field: 'lastName', width: 130, filter: 'agTextColumnFilter' },
       { headerName: 'Role', field: 'role', filter: 'agTextColumnFilter' },
-      { headerName: 'Grade', field: 'grade', width: 110 },
+      {
+        headerName: 'Grade',
+        field: 'grade',
+        width: 110,
+        floatingFilterComponent: 'selectFilterComponent',
+        floatingFilterComponentParams: {
+          items: ['A1', 'A2', 'B', 'C', 'D', 'E'],
+          isMultiple: false,
+          suppressFilterButton: true
+        },
+        suppressMenu: true
+      },
       { headerName: 'Skills', field: 'skills', filter: 'agTextColumnFilter' },
-      { headerName: 'Languages', field: 'languages', width: 150 },
+      {
+        headerName: 'Languages',
+        field: 'languages',
+        width: 150,
+        floatingFilterComponent: 'selectFilterComponent',
+        floatingFilterComponentParams: {
+          items: ['English', 'German'],
+          isMultiple: true,
+          suppressFilterButton: true
+        },
+        suppressMenu: true
+      },
       {
         headerName: 'On Bench',
         field: 'onBench',
         width: 125,
-        floatingFilterComponent: 'floatingFilterComponent',
+        floatingFilterComponent: 'selectFilterComponent',
         floatingFilterComponentParams: {
           items: ['true', 'false'],
+          isMultiple: false,
           suppressFilterButton: true
         },
-        filter: 'agTextColumnFilter',
-        suppressMenu: false
+        suppressMenu: true
       },
       { headerName: 'Availability', field: 'availability', width: 140, filter: 'agTextColumnFilter' },
-      { headerName: 'Mobility', field: 'mobility', width: 130 },
+      {
+        headerName: 'Mobility',
+        field: 'mobility',
+        width: 130,
+        floatingFilterComponent: 'selectFilterComponent',
+        floatingFilterComponentParams: {
+          items: ['No', 'Part of week', 'Weekly', 'Monthly', '6-12 Months', 'Relocation'],
+          isMultiple: false,
+          suppressFilterButton: true
+        },
+        suppressMenu: true
+      },
       {
         headerName: 'Employment',
         field: 'employmentType',
         width: 140,
-        floatingFilterComponent: 'floatingFilterComponent',
+        floatingFilterComponent: 'selectFilterComponent',
         floatingFilterComponentParams: {
           items: ['full-time', 'part-time'],
+          isMultiple: false,
           suppressFilterButton: true
         },
-        filter: 'agTextColumnFilter',
-        suppressMenu: false
+        suppressMenu: true
       }
     ];
 
@@ -66,7 +99,7 @@ export class SearchTableComponent {
     this.paginationNumberFormatter = function(params: any) {
       return '[' + params.value.toLocaleString() + ']';
     };
-    this.frameworkComponents = { floatingFilterComponent: SelectFilterComponent };
+    this.frameworkComponents = { selectFilterComponent: SelectFilterComponent };
   }
 
   onPageSizeChanged() {

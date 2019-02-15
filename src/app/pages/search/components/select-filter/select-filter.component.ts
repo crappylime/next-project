@@ -12,13 +12,14 @@ export interface SelectFilterChange {
 export interface SelectFilterParams extends IFloatingFilterParams<SerializedTextFilter, SelectFilterChange> {
   value: string;
   items: string[];
+  isMultiple: boolean;
 }
 
 @Component({
   selector: 'app-select-filter',
   template: `
     <mat-form-field class="ag-floating-filter-body">
-      <mat-select [formControl]="filterControl">
+      <mat-select [formControl]="filterControl" [multiple]="isMultiple">
         <mat-option *ngFor="let item of items" [value]="item">{{ item }}</mat-option>
       </mat-select>
     </mat-form-field>
@@ -31,6 +32,7 @@ export class SelectFilterComponent
     AgFrameworkComponent<SelectFilterParams> {
   public filterControl = new FormControl('');
   public items: string[];
+  public isMultiple: boolean;
   private params: SelectFilterParams;
 
   constructor() {
@@ -42,6 +44,7 @@ export class SelectFilterComponent
   agInit(params: SelectFilterParams): void {
     this.params = params;
     this.items = this.params.items;
+    this.isMultiple = this.params.isMultiple;
   }
 
   onParentModelChanged(parentModel: SerializedTextFilter): void {

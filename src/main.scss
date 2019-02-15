@@ -29,3 +29,9 @@
 
 // Theme customization
 @import "theme/theme";
+
+// override angular material styles for select filter
+.mat-form-field-wrapper .mat-form-field-flex .mat-form-field-infix {
+  border-top-width: 0px;
+  margin-top: 25px;
+}

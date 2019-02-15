@@ -11,7 +11,7 @@ import { SearchContainerComponent } from './components/search-container/search-c
 import { SearchFormComponent } from './components/search-form/search-form.component';
 import { SearchTableComponent } from './components/search-table/search-table.component';
 import { ProfileSidebarComponent } from './components/profile-sidebar/profile-sidebar.component';
-import { SliderFloatingFilterComponent } from './components/slider-floating-filter/slider-floating-filter.component';
+import { SelectFilterComponent } from './components/select-filter/select-filter.component';
 
 @NgModule({
   imports: [
@@ -19,7 +19,7 @@ import { SliderFloatingFilterComponent } from './components/slider-floating-filt
     TranslateModule,
     FlexLayoutModule,
     MaterialModule,
-    AgGridModule.withComponents([SliderFloatingFilterComponent]),
+    AgGridModule.withComponents([SelectFilterComponent]),
     SearchRoutingModule,
     SharedModule
   ],
@@ -28,7 +28,7 @@ import { SliderFloatingFilterComponent } from './components/slider-floating-filt
     SearchFormComponent,
     SearchTableComponent,
     ProfileSidebarComponent,
-    SliderFloatingFilterComponent
+    SelectFilterComponent
   ]
 })
 export class SearchModule {}

@@ -1,4 +1,7 @@
-<button (click)="clearFilters()">Clear Filters</button>
+<mat-form-field>
+  <input matInput (input)="applyFilter($event.target.value)" placeholder="Filter" />
+</mat-form-field>
+<button mat-raised-button color="accent" (click)="clearFilters()">Clear Filters</button>
 
 <ag-grid-angular
   #agGrid
@@ -10,22 +13,10 @@
   [debug]="true"
   [pagination]="true"
   [paginationPageSize]="paginationPageSize"
-  [paginationNumberFormatter]="paginationNumberFormatter"
   [rowData]="rowData | async"
   (gridReady)="onGridReady($event)"
   [animateRows]="true"
   [floatingFilter]="true"
   [frameworkComponents]="frameworkComponents"
+  [quickFilterText]="quickFilterText"
 ></ag-grid-angular>
-
-<div class="pagination-container">
-  <div class="pagination-header">
-    Page Size:
-    <select (change)="onPageSizeChanged()" id="page-size">
-      <option value="5" selected="">5</option>
-      <option value="10">10</option>
-      <option value="15">15</option>
-      <option value="25">25</option>
-    </select>
-  </div>
-</div>

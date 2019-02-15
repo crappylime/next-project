@@ -14,8 +14,8 @@ export class SearchTableComponent {
   columnDefs: any;
   defaultColDef: any;
   paginationPageSize: any;
-  paginationNumberFormatter: any;
   frameworkComponents: any;
+  quickFilterText: any;
 
   private gridApi: any;
   private gridColumnApi: any;
@@ -95,16 +95,8 @@ export class SearchTableComponent {
       filter: true
     };
 
-    this.paginationPageSize = 5;
-    this.paginationNumberFormatter = function(params: any) {
-      return '[' + params.value.toLocaleString() + ']';
-    };
+    this.paginationPageSize = 10;
     this.frameworkComponents = { selectFilterComponent: SelectFilterComponent };
-  }
-
-  onPageSizeChanged() {
-    const value = (<HTMLInputElement>document.getElementById('page-size')).value;
-    this.gridApi.paginationSetPageSize(Number(value));
   }
 
   onGridReady(params: any) {
@@ -117,5 +109,9 @@ export class SearchTableComponent {
   clearFilters() {
     this.gridApi.setFilterModel(null);
     this.gridApi.onFilterChanged();
+  }
+
+  applyFilter(value: string) {
+    this.quickFilterText = value;
   }
 }

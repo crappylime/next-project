@@ -9,6 +9,10 @@
 // 3rd party libraries
 @import "~material-design-icons-iconfont/dist/fonts/material-icons.css";
 
+// Ag-Grid Material custom theme
+@import "~ag-grid-community/dist/styles/ag-grid.css";
+@import "~ag-grid-community/dist/styles/ag-theme-material.css";
+
 // Angular Material custom theme
 // The mixins below must be included once so we separated them from the variables
 @import "~@angular/material/theming";

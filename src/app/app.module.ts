@@ -5,6 +5,7 @@ import { HttpClientModule } from '@angular/common/http';
 import { TranslateModule } from '@ngx-translate/core';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MaterialModule } from './material.module';
+import { AgGridModule } from 'ag-grid-angular';
 
 import { CoreModule } from '@app/core';
 import { SharedModule } from '@app/shared';
@@ -22,6 +23,7 @@ import { AppRoutingModule } from './app-routing.module';
     TranslateModule.forRoot(),
     BrowserAnimationsModule,
     MaterialModule,
+    AgGridModule.withComponents([]),
     CoreModule,
     SharedModule,
     ShellModule,

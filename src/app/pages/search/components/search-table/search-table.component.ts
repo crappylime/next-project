@@ -1,49 +1,63 @@
-import { Component, OnInit, ViewChild, AfterViewInit } from '@angular/core';
+import { Component } from '@angular/core';
 import { Employee } from '../../employee';
-import { MatTableDataSource, MatSort, MatPaginator } from '@angular/material';
 import { SearchService } from '../../search.service';
+import { Observable } from 'rxjs';
 
 @Component({
   selector: 'app-search-table',
   templateUrl: './search-table.component.html',
   styleUrls: ['./search-table.component.scss']
 })
-export class SearchTableComponent implements OnInit, AfterViewInit {
-  public displayedColumns = [
-    'firstName',
-    'lastName',
-    'role',
-    'grade',
-    'skills',
-    'languages',
-    'onBench',
-    'availability',
-    'mobility',
-    'employmentType'
-  ];
-  public dataSource = new MatTableDataSource<Employee>();
+export class SearchTableComponent {
+  rowData: Observable<Employee[] | string>;
+  columnDefs: any;
+  defaultColDef: any;
+  paginationPageSize: any;
+  paginationNumberFormatter: any;
 
-  @ViewChild(MatSort) sort: MatSort;
-  @ViewChild(MatPaginator) paginator: MatPaginator;
+  private gridApi: any;
+  private gridColumnApi: any;
 
-  constructor(private searchService: SearchService) {}
+  constructor(private searchService: SearchService) {
+    this.columnDefs = [
+      { headerName: 'First Name', field: 'firstName', width: 130, filter: 'agTextColumnFilter' },
+      { headerName: 'Last Name', field: 'lastName', width: 130, filter: 'agTextColumnFilter' },
+      { headerName: 'Role', field: 'role' },
+      { headerName: 'Grade', field: 'grade', width: 110 },
+      { headerName: 'Skills', field: 'skills', filter: 'agTextColumnFilter' },
+      { headerName: 'Languages', field: 'languages', width: 150 },
+      { headerName: 'On Bench', field: 'onBench', width: 125 },
+      { headerName: 'Availability', field: 'availability', width: 140 },
+      { headerName: 'Mobility', field: 'mobility', width: 130 },
+      { headerName: 'Employment', field: 'employmentType', width: 140 }
+    ];
 
-  ngOnInit() {
-    this.getAllEmployees();
+    this.defaultColDef = {
+      sortable: true,
+      resizable: true,
+      filter: true
+    };
+
+    this.paginationPageSize = 5;
+    this.paginationNumberFormatter = function(params: any) {
+      return '[' + params.value.toLocaleString() + ']';
+    };
   }
 
-  ngAfterViewInit(): void {
-    this.dataSource.sort = this.sort;
-    this.dataSource.paginator = this.paginator;
+  onPageSizeChanged() {
+    const value = (<HTMLInputElement>document.getElementById('page-size')).value;
+    this.gridApi.paginationSetPageSize(Number(value));
   }
 
-  public getAllEmployees = () => {
-    this.searchService.getEmployees().subscribe(res => {
-      this.dataSource.data = res as Employee[];
-    });
-  };
+  onGridReady(params: any) {
+    this.gridApi = params.api;
+    this.gridColumnApi = params.columnApi;
 
-  public doFilter = (value: string) => {
-    this.dataSource.filter = value.trim().toLocaleLowerCase();
-  };
+    this.rowData = this.searchService.getEmployees();
+  }
+
+  clearFilters() {
+    this.gridApi.setFilterModel(null);
+    this.gridApi.onFilterChanged();
+  }
 }

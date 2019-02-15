@@ -1,3 +1,62 @@
-<p>
-  search-table works!
-</p>
+<div fxLayout fxLayoutAlign="center center">
+  <mat-form-field fxFlex="40%">
+    <input matInput type="text" (keyup)="doFilter($event.target.value)" placeholder="Filter" />
+  </mat-form-field>
+</div>
+
+<table mat-table [dataSource]="dataSource" matSort>
+  <ng-container matColumnDef="firstName">
+    <th mat-sort-header mat-header-cell *matHeaderCellDef>First Name</th>
+    <td mat-cell *matCellDef="let element">{{ element.firstName }}</td>
+  </ng-container>
+
+  <ng-container matColumnDef="lastName">
+    <th mat-sort-header mat-header-cell *matHeaderCellDef>Last Name</th>
+    <td mat-cell *matCellDef="let element">{{ element.lastName }}</td>
+  </ng-container>
+
+  <ng-container matColumnDef="role">
+    <th mat-sort-header mat-header-cell *matHeaderCellDef>Role</th>
+    <td mat-cell *matCellDef="let element">{{ element.role }}</td>
+  </ng-container>
+
+  <ng-container matColumnDef="grade">
+    <th mat-sort-header mat-header-cell *matHeaderCellDef>Grade</th>
+    <td mat-cell *matCellDef="let element">{{ element.grade }}</td>
+  </ng-container>
+
+  <ng-container matColumnDef="mobility">
+    <th mat-sort-header mat-header-cell *matHeaderCellDef>Mobility</th>
+    <td mat-cell *matCellDef="let element">{{ element.mobility }}</td>
+  </ng-container>
+
+  <ng-container matColumnDef="employmentType">
+    <th mat-sort-header mat-header-cell *matHeaderCellDef>EmploymentType</th>
+    <td mat-cell *matCellDef="let element">{{ element.employmentType }}</td>
+  </ng-container>
+
+  <ng-container matColumnDef="languages">
+    <th mat-sort-header mat-header-cell *matHeaderCellDef>Languages</th>
+    <td mat-cell *matCellDef="let element">{{ element.languages }}</td>
+  </ng-container>
+
+  <ng-container matColumnDef="skills">
+    <th mat-sort-header mat-header-cell *matHeaderCellDef>Skills</th>
+    <td mat-cell *matCellDef="let element">{{ element.skills }}</td>
+  </ng-container>
+
+  <ng-container matColumnDef="onBench">
+    <th mat-sort-header mat-header-cell *matHeaderCellDef>On Bench</th>
+    <td mat-cell *matCellDef="let element">{{ element.onBench }}</td>
+  </ng-container>
+
+  <ng-container matColumnDef="availability">
+    <th mat-sort-header mat-header-cell *matHeaderCellDef>Availability</th>
+    <td mat-cell *matCellDef="let element">{{ element.availability }}</td>
+  </ng-container>
+
+  <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+  <tr mat-row *matRowDef="let row; columns: displayedColumns"></tr>
+</table>
+
+<mat-paginator [pageSize]="5" [pageSizeOptions]="[5, 10, 15, 20]"> </mat-paginator>

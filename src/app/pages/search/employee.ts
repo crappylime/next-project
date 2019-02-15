@@ -1,4 +1,4 @@
-interface Employee {
+export interface Employee {
   id: number;
   avatar: string;
   firstName: string;
@@ -19,14 +19,14 @@ interface Employee {
   educations: Education[];
 }
 
-interface Education {
+export interface Education {
   country: string;
   university: string;
   course: string;
   degree: string;
 }
 
-interface Experience {
+export interface Experience {
   company: string;
   country: string;
   time: string;
@@ -37,7 +37,7 @@ interface Experience {
   skills: string[];
 }
 
-interface Preference {
+export interface Preference {
   languages: string[];
   skills: string[];
   role: string;
@@ -45,7 +45,7 @@ interface Preference {
   description: string;
 }
 
-interface Project {
+export interface Project {
   name: string;
   startDate: number;
   endDate: number;

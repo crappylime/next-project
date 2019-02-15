@@ -17,7 +17,7 @@ export class SearchService {
   getEmployees(): Observable<Employee[] | string> {
     return this.httpClient
       .cache()
-      .get<Employee[]>(routes.employees())
+      .get<Employee[]>('/assets/employees.json')
       .pipe(catchError(() => of('Error, could not load employees :-(')));
   }
 }

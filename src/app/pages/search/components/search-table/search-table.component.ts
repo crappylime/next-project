@@ -1,7 +1,8 @@
 import { Component } from '@angular/core';
+import { Observable } from 'rxjs';
 import { Employee } from '../../employee';
 import { SearchService } from '../../search.service';
-import { Observable } from 'rxjs';
+import { SliderFloatingFilterComponent } from '../slider-floating-filter/slider-floating-filter.component';
 
 @Component({
   selector: 'app-search-table',
@@ -14,6 +15,7 @@ export class SearchTableComponent {
   defaultColDef: any;
   paginationPageSize: any;
   paginationNumberFormatter: any;
+  frameworkComponents: any;
 
   private gridApi: any;
   private gridColumnApi: any;
@@ -23,7 +25,18 @@ export class SearchTableComponent {
       { headerName: 'First Name', field: 'firstName', width: 130, filter: 'agTextColumnFilter' },
       { headerName: 'Last Name', field: 'lastName', width: 130, filter: 'agTextColumnFilter' },
       { headerName: 'Role', field: 'role' },
-      { headerName: 'Grade', field: 'grade', width: 110 },
+      {
+        headerName: 'Grade',
+        field: 'grade',
+        width: 110,
+        floatingFilterComponent: 'floatingFilterComponent',
+        floatingFilterComponentParams: {
+          maxValue: 7,
+          suppressFilterButton: true
+        },
+        filter: 'agNumberColumnFilter',
+        suppressMenu: false
+      },
       { headerName: 'Skills', field: 'skills', filter: 'agTextColumnFilter' },
       { headerName: 'Languages', field: 'languages', width: 150 },
       { headerName: 'On Bench', field: 'onBench', width: 125 },
@@ -42,6 +55,7 @@ export class SearchTableComponent {
     this.paginationNumberFormatter = function(params: any) {
       return '[' + params.value.toLocaleString() + ']';
     };
+    this.frameworkComponents = { floatingFilterComponent: SliderFloatingFilterComponent };
   }
 
   onPageSizeChanged() {

@@ -21,9 +21,66 @@
 
   .profile-sidebar {
     height: 100%;
-    width: 500px;
+    width: 600px;
     background-color: white;
     float: right;
-    padding: 40px;
+    padding: 10px 40px 40px 40px;
+    overflow-y: scroll;
+
+    img {
+      border-radius: 50%;
+      border: 1px solid black;
+      width: 135px;
+    }
+
+    p {
+      font-size: 12px;
+      text-align: left;
+    }
+
+    .sub-header {
+      font-size: 14px;
+      font-weight: 400;
+
+      span {
+        padding: 0 5px;
+        border-bottom: 1px solid #000;
+      }
+    }
+
+    .subtitle {
+      font-size: 14px;
+      padding: 5px 10px;
+    }
+
+    .title-tile {
+      background-color: #e3f4faa6;
+      padding: 15px;
+    }
+
+    section {
+      width: 100%;
+      float: left;
+      padding-bottom: 10px;
+
+      .column {
+        width: 50%;
+        float: left;
+      }
+    }
+
+    .skills {
+      display: flex;
+      flex-wrap: wrap;
+      width: 100%;
+
+      p {
+        width: 100%;
+      }
+
+      mat-chip {
+        margin: 10px;
+      }
+    }
   }
 }

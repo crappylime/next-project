@@ -8,6 +8,107 @@
     </svg>
   </span>
   <div class="profile-sidebar" (click)="$event.stopPropagation()">
-    {{ employee?.email }}
+    <img src="{{ employee?.avatar }}" alt="Avatar" />
+    <h3>{{ employee?.firstName }} {{ employee?.lastName }}</h3>
+    <mat-tab-group>
+      <mat-tab label="General">
+        <section>
+          <div class="column">
+            <p>Role: {{ employee?.role }}</p>
+            <p>Grade: {{ employee?.grade }}</p>
+            <p>Email: {{ employee?.email }}</p>
+            <p>Languages: {{ employee?.languages }}</p>
+          </div>
+          <div class="column">
+            <p>On bench: {{ employee?.onBench ? 'Yes' : 'No' }}</p>
+            <p>Availability: {{ employee?.availability }}</p>
+            <p>Employment: {{ employee?.employmentType }}</p>
+            <p>Mobility: {{ employee?.mobility }}</p>
+          </div>
+        </section>
+
+        <section>
+          <p class="sub-header"><span>Current Project</span></p>
+          <p>
+            <b>{{ employee?.project.name }}</b> | {{ employee?.project.startDate | date }} -
+            {{ employee?.project.endDate | date }}
+          </p>
+        </section>
+
+        <section>
+          <p class="sub-header"><span>Summary</span></p>
+          <p>{{ employee?.summary }}</p>
+        </section>
+
+        <section>
+          <div class="skills">
+            <p class="sub-header"><span>Skills</span></p>
+            <mat-chip-list *ngFor="let skill of employee?.skills">
+              <mat-chip color="accent" selected>{{ skill }}</mat-chip>
+            </mat-chip-list>
+          </div>
+        </section>
+
+        <section>
+          <p class="sub-header"><span>Preferences</span></p>
+          <p>Languages: {{ employee?.preference.languages }}</p>
+          <p>Skills:</p>
+          <div class="skills">
+            <mat-chip-list *ngFor="let skill of employee?.preference.skills">
+              <mat-chip>{{ skill }}</mat-chip>
+            </mat-chip-list>
+          </div>
+          <p>Role: {{ employee?.preference.role }}</p>
+          <p>More details: {{ employee?.preference.description }}</p>
+        </section>
+      </mat-tab>
+
+      <mat-tab label="Experience">
+        <div *ngFor="let experience of employee?.experiences">
+          <section>
+            <p class="sub-header title-tile">
+              <b>{{ experience.role }}</b> in <i>{{ experience.company }}</i>
+            </p>
+            <div class="column">
+              <p>Project: {{ experience.project }}</p>
+              <p>Industry: {{ experience.industry }}</p>
+            </div>
+            <div class="column">
+              <p>Country: {{ experience.country }}</p>
+              <p>Time: {{ experience.time }}</p>
+            </div>
+          </section>
+          <section>
+            <p class="sub-header"><span>Responsibilities</span></p>
+            <p>{{ experience.responsibilities }}</p>
+          </section>
+          <section>
+            <div class="skills">
+              <p class="sub-header"><span>Skills</span></p>
+              <mat-chip-list *ngFor="let skill of experience.skills">
+                <mat-chip color="accent" selected>{{ skill }}</mat-chip>
+              </mat-chip-list>
+            </div>
+          </section>
+        </div>
+      </mat-tab>
+
+      <mat-tab label="Education">
+        <div *ngFor="let education of employee?.educations">
+          <section>
+            <p class="sub-header title-tile">
+              <b>{{ education.degree }}</b
+              >, <i>{{ education.course }}</i>
+            </p>
+            <div class="column">
+              <p class="subtitle">{{ education.university }}</p>
+            </div>
+            <div class="column">
+              <p class="subtitle">{{ education.country }}</p>
+            </div>
+          </section>
+        </div>
+      </mat-tab>
+    </mat-tab-group>
   </div>
 </div>

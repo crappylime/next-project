@@ -16,6 +16,9 @@ export class SearchTableComponent {
   paginationPageSize: any;
   frameworkComponents: any;
   quickFilterText: any;
+  rowSelection: any;
+  currentEmployee: Employee;
+  isOpen = false;
 
   private gridApi: any;
   private gridColumnApi: any;
@@ -97,6 +100,7 @@ export class SearchTableComponent {
 
     this.paginationPageSize = 10;
     this.frameworkComponents = { selectFilterComponent: SelectFilterComponent };
+    this.rowSelection = 'single';
   }
 
   onGridReady(params: any) {
@@ -113,5 +117,13 @@ export class SearchTableComponent {
 
   applyFilter(value: string) {
     this.quickFilterText = value;
+  }
+
+  onSelectionChanged() {
+    const selectedRows = this.gridApi.getSelectedRows();
+    this.currentEmployee = selectedRows[0];
+    this.isOpen = true;
+    console.log(this.currentEmployee);
+    console.log(this.isOpen);
   }
 }

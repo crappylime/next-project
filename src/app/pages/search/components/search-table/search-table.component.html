@@ -19,4 +19,8 @@
   [floatingFilter]="true"
   [frameworkComponents]="frameworkComponents"
   [quickFilterText]="quickFilterText"
+  [rowSelection]="rowSelection"
+  (click)="onSelectionChanged()"
 ></ag-grid-angular>
+
+<app-profile-sidebar [employee]="currentEmployee" [isOpen]="isOpen" (close)="isOpen = false"></app-profile-sidebar>

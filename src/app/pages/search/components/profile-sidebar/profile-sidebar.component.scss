@@ -1,0 +1,29 @@
+.profile-sidebar-container {
+  height: calc(100vh - 64px);
+  background-color: rgba(0, 0, 0, 0.5);
+  position: fixed;
+  top: 64px;
+  width: 100%;
+  display: none;
+  left: 0;
+
+  &.opened {
+    display: block;
+  }
+
+  .close-icon {
+    position: absolute;
+    top: 0px;
+    right: 15px;
+    transform: scale(0.3);
+    cursor: pointer;
+  }
+
+  .profile-sidebar {
+    height: 100%;
+    width: 500px;
+    background-color: white;
+    float: right;
+    padding: 40px;
+  }
+}

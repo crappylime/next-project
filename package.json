@@ -17,7 +17,8 @@
     "prettier:check": "prettier --list-different \"./{src,e2e}/**/*.{ts,js,scss}\"",
     "postinstall": "npm run prettier -s",
     "precommit": "pretty-quick --staged",
-    "generate": "ng generate"
+    "generate": "ng generate",
+    "publish": "ng build --prod --base-href https://crappylime.github.io/next-project/ &&  ngh -no-silent"
   },
   "dependencies": {
     "@angular/animations": "^7.0.0",

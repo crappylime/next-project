@@ -6,7 +6,7 @@ import { SearchContainerComponent } from './components/search-container/search-c
 
 const routes: Routes = [
   // Module is lazy loaded, see app-routing.module.ts
-  { path: '', component: SearchContainerComponent, data: { title: extract('SearchContainer') } }
+  { path: '', component: SearchContainerComponent, data: { title: extract('Search') } }
 ];
 
 @NgModule({

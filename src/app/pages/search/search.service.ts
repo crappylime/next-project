@@ -5,7 +5,7 @@ import { catchError } from 'rxjs/operators';
 import { Employee } from './employee';
 
 const routes = {
-  employees: () => `/employees.json?key=e1d2e8e0`
+  employees: () => `/assets/employees.json`
 };
 
 @Injectable({
@@ -17,7 +17,7 @@ export class SearchService {
   getEmployees(): Observable<Employee[] | string> {
     return this.httpClient
       .cache()
-      .get<Employee[]>('/assets/employees.json')
+      .get<Employee[]>(routes.employees())
       .pipe(catchError(() => of('Error, could not load employees :-(')));
   }
 }

@@ -12,7 +12,7 @@ const proxyConfig = [
   {
     context: '/api',
     pathRewrite: { '^/api': '' },
-    target: 'https://my.api.mockaroo.com',
+    target: 'https://crappylime.github.io/next-project',
     changeOrigin: true,
     secure: false
   }

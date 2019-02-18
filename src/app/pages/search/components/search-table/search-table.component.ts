@@ -122,8 +122,13 @@ export class SearchTableComponent {
   onSelectionChanged() {
     const selectedRows = this.gridApi.getSelectedRows();
     this.currentEmployee = selectedRows[0];
-    this.isOpen = true;
-    console.log(this.currentEmployee);
-    console.log(this.isOpen);
+    if (this.currentEmployee) {
+      this.isOpen = true;
+    }
+  }
+
+  close() {
+    this.isOpen = false;
+    this.gridApi.deselectAll();
   }
 }

@@ -1,7 +1,10 @@
-<mat-form-field>
-  <input matInput (input)="applyFilter($event.target.value)" placeholder="Filter" />
-</mat-form-field>
-<button mat-raised-button color="accent" (click)="clearFilters()">Clear Filters</button>
+<div>
+  <mat-form-field>
+    <input matInput (input)="applyFilter($event.target.value)" placeholder="Filter" />
+  </mat-form-field>
+  <button mat-raised-button color="accent" (click)="clearFilters()">Clear Filters</button>
+  <button mat-raised-button color="accent">Save</button>
+</div>
 
 <ag-grid-angular
   #agGrid
@@ -23,4 +26,4 @@
   (click)="onSelectionChanged()"
 ></ag-grid-angular>
 
-<app-profile-sidebar [employee]="currentEmployee" [isOpen]="isOpen" (close)="isOpen = false"></app-profile-sidebar>
+<app-profile-sidebar [employee]="currentEmployee" [isOpen]="isOpen" (close)="close()"></app-profile-sidebar>
